@@ -9,22 +9,20 @@ function setup() {
   socket.on('chat message', newDrawing);
 
   socket.on('chat message', function(msg) {
-    var angle = 0.3;
     push();
     fill(random(255), random(255), 255);
-    translate(random(width / 2), random(height / 2));
-    rotate(angle);
+    translate(random(width), random(height));
+    rotate(random(-1, 1));
     textSize(24);
     text(msg, 0, 0);
     pop();
-    angle += 0.1;
   });
 }
 
 function newDrawing(data) {
   fill(255, random(255), random(255));
   noStroke();
-  ellipse(data.x, data.y, 5, 5);
+  rect(data.x, data.y, 15, 15);
 }
 
 function mouseDragged() {
@@ -38,9 +36,9 @@ function mouseDragged() {
   socket.emit('mouse', data);
   fill(random(255), random(255), 255);
   noStroke();
-  ellipse(mouseX, mouseY, 5, 5)
+  ellipse(mouseX, mouseY, 15, 15)
 }
 
 function draw() {
-  background(0, 0, 0, 5);
+  background(0, 0, 0, 1);
 }
