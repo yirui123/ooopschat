@@ -42,5 +42,5 @@ function mouseDragged() {
 }
 
 function draw() {
-  background(0, 0, 0, 2);
+  background(0, 0, 0, 4);
 }
