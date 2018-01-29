@@ -3,7 +3,7 @@ var capture;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255, 255, 0);
+  background(0);
   socket = io();
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
@@ -17,19 +17,24 @@ function setup() {
       textSize(30);
       text(msg, 0, 0);
       pop();
+      fill(0, 0, 0, 50);
+      rect(0, 0, width, height);
     }
   });
 
 }
 
 function newDrawing(data) {
-  fill(155 + noise(mouseX, mouseY) * 100, 186, random(10, 50), 155);
+  fill(155 + noise(mouseX, mouseY) * 100, 186, random(10, 50));
   noStroke();
-  rect(data.x, data.y, 15, 15);
+  rect(data.x, data.y, 3, 3);
+
+  fill(0, 0, 0, 70);
+  rect(0, 0, width, height);
 }
 
 function mouseDragged() {
-  console.log('sending: ' + mouseX + ', ' + mouseY);
+  //console.log('sending: ' + mouseX + ', ' + mouseY);
 
   var data = {
     x: mouseX,
@@ -37,13 +42,11 @@ function mouseDragged() {
   }
   // name the message 'mouse'
   socket.emit('mouse', data);
-  fill(random(10, 50), 186, 155 + noise(mouseX, mouseY) * 100, 155);
+  fill(random(10, 50), 186, 155 + noise(mouseX, mouseY) * 100);
   noStroke();
-  ellipse(mouseX, mouseY, 15, 15)
-}
-
-function draw() {
-  background(0, 0, 0, 1);
-  fill(0, 0, 0, 3);
+  ellipse(mouseX, mouseY, 3, 3);
+  fill(0, 0, 0, 5);
   rect(0, 0, width, height);
 }
+
+function draw() {}
