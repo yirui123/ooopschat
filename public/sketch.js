@@ -3,21 +3,28 @@ var capture;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255);
-  capture = createCapture(VIDEO);
-  capture.size(random(100, 320), random(100, 320));
-  capture.hide();
-
+  background(0);
   socket = io();
   socket.on('mouse', newDrawing);
+  socket.on('chat message', newDrawing);
+
+  socket.on('chat message', function(msg) {
+    var angle = 0.3;
+    push();
+    fill(random(255), random(255), 255);
+    translate(random(width / 2), random(height / 2));
+    rotate(angle);
+    textSize(24);
+    text(msg, 0, 0);
+    pop();
+    angle += 0.1;
+  });
 }
 
 function newDrawing(data) {
-  // noStroke();
-  // fill(155, 155, 255);
-  // ellipse(data.x, data.y, 50, 50);
-  image(capture, data.x, data.y, random(100, 320), random(100, 320));
-  filter(INVERT);
+  fill(255, random(255), random(255));
+  noStroke();
+  ellipse(data.x, data.y, 5, 5);
 }
 
 function mouseDragged() {
@@ -29,14 +36,11 @@ function mouseDragged() {
   }
   // name the message 'mouse'
   socket.emit('mouse', data);
-
-  // noStroke();
-  // fill(155, 0, 255);
-  // ellipse(mouseX, mouseY, 50, 50);
-  image(capture, mouseX, mouseY, random(100, 320), random(100, 320));
-  filter(POSTERIZE, 3);
+  fill(random(255), random(255), 255);
+  noStroke();
+  ellipse(mouseX, mouseY, 5, 5)
 }
 
 function draw() {
-  background(255, 255, 255, 1);
+  background(0, 0, 0, 5);
 }
