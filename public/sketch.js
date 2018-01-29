@@ -11,7 +11,7 @@ function setup() {
   socket.on('chat message', function(msg) {
     push();
     fill(random(155), random(255), 255);
-    translate(random(100, width - 100), random(100, height - 100));
+    translate(random(width / 2), random(height / 2));
     rotate(random(-2, 2));
     textSize(30);
     text(msg, 0, 0);
