@@ -3,7 +3,7 @@ var capture;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255, 255, 0);
+  background(255);
   socket = io();
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
@@ -19,6 +19,7 @@ function setup() {
       pop();
     }
   });
+
 }
 
 function newDrawing(data) {
@@ -43,4 +44,6 @@ function mouseDragged() {
 
 function draw() {
   background(0, 0, 0, 1);
+  fill(0, 0, 0, 3);
+  rect(0, 0, width, height);
 }
