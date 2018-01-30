@@ -29,9 +29,9 @@ function newConnection(socket) {
     //console.log(data);
   }
 
-  socket.on('chat message', function(msg, loc) {
+  socket.on('chat message', function(msg) {
     io.emit('chat message', msg);
-    io.emit('chat message', loc);
+    // io.emit('chat message', loc);
   });
 
 }

@@ -1,15 +1,7 @@
 function getRandomSize() {
   let r = pow(random(0, 1), 3);
   return constrain(r * 18, 1, 3);
-  // let r = randomGaussian() * 2.5;
-  // return constrain(abs(r * r), 2, 36);
-  // while (true) {
-  //   let r1 = random(1);
-  //   let r2 = random(1);
-  //   if (r2 > r1) {
-  //     return r1*36;
-  //   }
-  // }
+
 }
 
 class Snowflake {
@@ -43,7 +35,7 @@ class Snowflake {
   }
 
   render() {
-    let alpha = random(1, 15);
+    let alpha = random(1, 25);
     noFill();
     // stroke(116, 209, 234, alpha);
     stroke(255, 0, 0, alpha);
@@ -56,15 +48,11 @@ class Snowflake {
     return (this.pos.y > height - this.r);
   }
 
-  pileUp() {
-    for (let i = snow.length - 1; i >= 0; i--) {
-      if (snow[i].offScreen()) {
-        if (this.r >= 5) {
-          this.pos.y = height - this.r;
-        } else if (snow.length < 500) {
-          snow.splice(i, 30);
-        } else {
-          snow.splice(i, 200);
+  disappear() {
+    if (snow.length > 500) {
+      for (let i = snow.length - 1; i >= 0; i--) {
+        if (snow.length % 10 === 1) {
+          snow.splice(i, 1);
         }
       }
     }

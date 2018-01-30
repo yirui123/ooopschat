@@ -10,14 +10,14 @@ function setup() {
   socket = io();
   gravity = createVector(0, 0.0005);
 
-  loadJSON("http://ip-api.com/json", gotData, 'jsonp');
-
-  function gotData(data) {
-    locationData = data;
-    loc = locationData.city;
-    //console.log(locationData.city);
-    socket.emit('chat message', loc);
-  }
+  // loadJSON("http://ip-api.com/json", gotData, 'jsonp');
+  //
+  // function gotData(data) {
+  //   locationData = data;
+  //   loc = locationData.city;
+  //   //console.log(locationData.city);
+  //   socket.emit('chat message', loc);
+  // }
 
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
@@ -74,6 +74,6 @@ function draw() {
     flake.applyForce(gravity);
     flake.render();
     flake.update();
-    flake.pileUp();
+    flake.disappear();
   }
 }
