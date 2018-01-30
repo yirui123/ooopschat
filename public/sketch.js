@@ -2,12 +2,22 @@ var socket;
 
 let snow = [];
 let gravity;
+var loc;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
   socket = io();
   gravity = createVector(0, 0.0005);
+
+  loadJSON("http://ip-api.com/json", gotData, 'jsonp');
+
+  function gotData(data) {
+    locationData = data;
+    loc = locationData.city;
+    //console.log(locationData.city);
+  }
+
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
 
@@ -16,10 +26,10 @@ function setup() {
       push();
       fill(random(255), 255, random(255));
       translate(round(random(width / 2)), round(random(height / 2)));
-      rotate(random(-2, 2));
+      rotate(random(-1, 1));
       textFont('Ubuntu Mono');
-      textSize(28);
-      text(msg, 0, 0);
+      textSize(20);
+      text('someone from ' + loc + ': \n' + msg, 0, 0);
       pop();
       fill(0, 0, 0, 53);
       rect(0, 0, width, height);
@@ -27,6 +37,8 @@ function setup() {
   });
 
 }
+
+
 
 function newDrawing(data) {
   fill(155 + noise(mouseX, mouseY) * 100, 186, random(10, 50));
