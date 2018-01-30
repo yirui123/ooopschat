@@ -1,10 +1,13 @@
 var socket;
-var capture;
+
+let snow = [];
+let gravity;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
   socket = io();
+  gravity = createVector(0, 0.0001);
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
 
@@ -49,4 +52,14 @@ function mouseDragged() {
   rect(0, 0, width, height);
 }
 
-function draw() {}
+function draw() {
+  background(0, 0, 0, 1);
+  snow.push(new Snowflake());
+
+  for (flake of snow) {
+    flake.applyForce(gravity);
+    flake.render();
+    flake.update();
+    flake.pileUp();
+  }
+}
