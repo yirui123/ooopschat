@@ -10,7 +10,7 @@ class Snowflake {
     for (var i = 0; i <= 20; i++) {
       x += random(-width / 2, width / 2);
     }
-    let y = random(-50, -10);
+    let y = random(-30, 0);
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector();
@@ -35,7 +35,7 @@ class Snowflake {
   }
 
   render() {
-    let alpha = random(1, 25);
+    let alpha = random(5, 25);
     noFill();
     // stroke(116, 209, 234, alpha);
     stroke(255, 0, 0, alpha);
