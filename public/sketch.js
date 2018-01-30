@@ -23,7 +23,7 @@ function setup() {
   socket.on('chat message', newDrawing);
 
   socket.on('chat message', function(msg) {
-    for (var i = 0; i < random(2, 6); i++) {
+    for (var i = 0; i < random(4, 10); i++) {
       push();
       fill(random(255), 255, random(255));
       translate(round(random(width / 2)), round(random(height / 2)));
