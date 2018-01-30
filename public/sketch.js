@@ -30,7 +30,7 @@ function setup() {
       rotate(random(-1, 1));
       textFont('Ubuntu Mono');
       textSize(20);
-      text('someone from ' + loc + ': \n' + msg, 0, 0);
+      text(msg, 0, 0);
       pop();
       fill(0, 0, 0, 53);
       rect(0, 0, width, height);
