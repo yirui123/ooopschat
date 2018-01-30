@@ -53,7 +53,7 @@ function mouseDragged() {
 }
 
 function draw() {
-  background(0, 0, 0, 1);
+  background(0, 0, 0, 3);
   snow.push(new Snowflake());
 
   for (flake of snow) {
