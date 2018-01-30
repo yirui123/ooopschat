@@ -13,7 +13,7 @@ function setup() {
       push();
       fill(random(155), random(255), 255);
       translate(random(width / 4, (width / 4) * 3), random(height / 4, (width / 4) * 3));
-      rotate(random(-2, 2));
+      rotate(random(-3, 3));
       textSize(30);
       text(msg, 0, 0);
       pop();
@@ -27,9 +27,9 @@ function setup() {
 function newDrawing(data) {
   fill(155 + noise(mouseX, mouseY) * 100, 186, random(10, 50));
   noStroke();
-  rect(data.x, data.y, 3, 3);
+  rect(data.x, data.y, 5, 5);
 
-  fill(0, 0, 0, 70);
+  fill(0, 0, 0, 3);
   rect(0, 0, width, height);
 }
 
@@ -44,8 +44,8 @@ function mouseDragged() {
   socket.emit('mouse', data);
   fill(random(10, 50), 186, 155 + noise(mouseX, mouseY) * 100);
   noStroke();
-  ellipse(mouseX, mouseY, 3, 3);
-  fill(0, 0, 0, 5);
+  ellipse(mouseX, mouseY, 5, 5);
+  fill(0, 0, 0, 3);
   rect(0, 0, width, height);
 }
 
