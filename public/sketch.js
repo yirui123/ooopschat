@@ -16,6 +16,7 @@ function setup() {
     locationData = data;
     loc = locationData.city;
     //console.log(locationData.city);
+    socket.emit('chat message', loc);
   }
 
   socket.on('mouse', newDrawing);
