@@ -12,12 +12,13 @@ function setup() {
   socket.on('chat message', newDrawing);
 
   socket.on('chat message', function(msg) {
-    for (var i = 0; i < random(2, 5); i++) {
+    for (var i = 0; i < random(2, 6); i++) {
       push();
-      fill(random(155), random(255), 255);
-      translate(random(width / 4, (width / 4) * 3), random(height / 4, (width / 4) * 3));
-      rotate(random(-3, 3));
-      textSize(25);
+      fill(random(255), 255, random(255));
+      translate(round(random(width / 2)), round(random(height / 2)));
+      rotate(random(-2, 2));
+      textFont('Ubuntu Mono');
+      textSize(28);
       text(msg, 0, 0);
       pop();
       fill(0, 0, 0, 53);
