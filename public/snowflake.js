@@ -15,7 +15,7 @@ function getRandomSize() {
 class Snowflake {
   constructor() {
     let x = random(width);
-    let y = random(-50, -0);
+    let y = random(-50, -10);
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector();
@@ -40,7 +40,7 @@ class Snowflake {
   }
 
   render() {
-    let alpha = random(5, 25);
+    let alpha = random(3, 15);
     noFill();
     stroke(255, 0, 0, alpha);
     strokeWeight(this.r);

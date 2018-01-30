@@ -7,7 +7,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
   socket = io();
-  gravity = createVector(0, 0.00001);
+  gravity = createVector(0, 0.0005);
   socket.on('mouse', newDrawing);
   socket.on('chat message', newDrawing);
 
@@ -20,7 +20,7 @@ function setup() {
       textSize(30);
       text(msg, 0, 0);
       pop();
-      fill(0, 0, 0, 50);
+      fill(0, 0, 0, 53);
       rect(0, 0, width, height);
     }
   });
