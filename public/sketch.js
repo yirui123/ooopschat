@@ -17,7 +17,7 @@ function setup() {
       fill(random(155), random(255), 255);
       translate(random(width / 4, (width / 4) * 3), random(height / 4, (width / 4) * 3));
       rotate(random(-3, 3));
-      textSize(30);
+      textSize(25);
       text(msg, 0, 0);
       pop();
       fill(0, 0, 0, 53);
